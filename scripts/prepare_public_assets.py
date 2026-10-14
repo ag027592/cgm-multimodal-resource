@@ -70,7 +70,7 @@ def public_dictionary(source):
     original = read_csv(source)
     if len(original) != 203:
         raise ValueError("Expected 203 source fields; review a changed snapshot before publishing")
-    fields, overrides = [], 0
+    fields, overrides, description_updates = [], 0, 0
     for row in original:
         basename = PurePosixPath(row["source_table"].replace("\\", "/")).name
         item = {name: row[name].strip() for name in PUBLIC_COLUMNS if name not in ("id", "source_table")}
@@ -78,6 +78,11 @@ def public_dictionary(source):
         item["id"] = "::".join((item["wave"], basename, item["field"]))
         if item["storage_type"] == "text cells; observed types below are lexical classifications":
             item["storage_type"] = "Exported text cells; semantic meaning is described separately."
+        if item["wave"] in {"G1", "G2"} and item["field"] == "sensorglucose":
+            if basename != f"{item['wave']}_Raw_cgm_removed.csv":
+                raise ValueError("Unexpected G1/G2 sensor table for the reviewed description update")
+            item["interpretation"] = "Sensor glucose in mg/dL. This export omits the unit in the column name; mg/dL is supported by verified lineage to the raw export."
+            description_updates += 1
         if item["wave"] == "G3" and item["field"] == "sensorglucose":
             if basename not in {"G3_Raw_cgm.csv", "G3_Raw_cgm_removed.csv"}:
                 raise ValueError("Unexpected G3 sensor table for the reviewed unit override")
@@ -90,6 +95,8 @@ def public_dictionary(source):
         fields.append(item)
     if overrides != 2:
         raise ValueError("Expected exactly two G3 sensorglucose unit updates")
+    if description_updates != 2:
+        raise ValueError("Expected exactly two G1/G2 sensorglucose description updates")
     if len({row["id"] for row in fields}) != len(fields):
         raise ValueError("Duplicate public schema-field ID")
     if {row["wave"] for row in fields} != {"G1", "G2", "G3"}:
@@ -188,6 +195,7 @@ def sources_document(sources, exported):
         "- `source_table` contains the basename only. `id` is a stable schema key composed of wave, table basename and field name; it is not a participant identifier.",
         "- Record values, categorical vocabulary, record/missingness counts, source-record hashes, full source paths and private manifests are excluded from dictionary exports.",
         "- Text-cell storage descriptions are reworded to remove references to observed-type columns that are excluded from the public dictionary.",
+        "- Two G1/G2 `sensorglucose` descriptions are reworded to describe their verified raw-export lineage and supported mg/dL units, removing a stale cross-wave caveat. Their existing provenance status and evidence are unchanged; no original source files are edited.",
         "- Two G3 `sensorglucose` descriptions are updated: a coauthor confirmed mg/dL and that the original Clarity `Glucose.Value..mg.dL.` column was renamed without numerical conversion. This is author-provided lineage, not independently recovered header metadata. Device provenance remains unverified. No values were converted or original source files edited.",
         "- Resource counts are aggregate descriptions. The 86 wave-specific identifiers are not established as 86 distinct people; 74 clinical-table identifiers represent a different available-record population.",
         "- Analysis eligibility is 369 complete paired diary days followed by 327 days meeting the specified CGM rules across 50 wave-specific identifiers. Date co-occurrence does not establish synchronized events or clinical prediction.",
@@ -237,7 +245,7 @@ def main():
     if read_csv((website / "data/dictionary.csv").read_bytes()) != dictionary["fields"]:
         raise AssertionError("Dictionary CSV roundtrip mismatch")
     print(json.dumps({"status": "passed", "dictionary_fields": len(dictionary["fields"]), "public_columns": list(PUBLIC_COLUMNS),
-                      "waves": ["G1", "G2", "G3"], "layers": 4, "g3_unit_overrides": 2,
+                      "waves": ["G1", "G2", "G3"], "layers": 4, "g3_unit_overrides": 2, "g1_g2_description_updates": 2,
                       "headline": resource["headline"], "eligible_diary_days": resource["eligibility"]["cgm_eligible_days"],
                       "source_artifacts_unchanged": True, "written": list(exported) + ["CONTENT_SOURCES.md"]}, indent=2))
 

@@ -262,7 +262,7 @@
       "source_table": "G1_Raw_cgm_removed.csv",
       "field": "sensorglucose",
       "storage_type": "Exported text cells; semantic meaning is described separately.",
-      "interpretation": "Sensor glucose; header omits unit. G1/G2 inherit raw units through verified lineage; G3 requires confirmation.",
+      "interpretation": "Sensor glucose in mg/dL. This export omits the unit in the column name; mg/dL is supported by verified lineage to the raw export.",
       "missing_policy": "trimmed empty or case-insensitive NA, N/A, NaN, None, Null; zero retained",
       "provenance_status": "unit_supported_by_verified_raw_lineage; device_provenance_unverified",
       "provenance_evidence": "Cohort audit: raw header names mg/dL and all filtered rows match raw values"
@@ -958,7 +958,7 @@
       "source_table": "G2_Raw_cgm_removed.csv",
       "field": "sensorglucose",
       "storage_type": "Exported text cells; semantic meaning is described separately.",
-      "interpretation": "Sensor glucose; header omits unit. G1/G2 inherit raw units through verified lineage; G3 requires confirmation.",
+      "interpretation": "Sensor glucose in mg/dL. This export omits the unit in the column name; mg/dL is supported by verified lineage to the raw export.",
       "missing_policy": "trimmed empty or case-insensitive NA, N/A, NaN, None, Null; zero retained",
       "provenance_status": "unit_supported_by_verified_raw_lineage; device_provenance_unverified",
       "provenance_evidence": "Cohort audit: raw header names mg/dL and all filtered rows match raw values"

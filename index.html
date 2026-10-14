@@ -23,7 +23,7 @@
       </a>
       <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
       <nav id="site-nav" aria-label="Main navigation">
-        <a href="#dataset">Dataset</a><a href="#analyses">Analyses</a><a href="#dictionary">Dictionary</a><a class="nav-access" href="#access">Request access <span aria-hidden="true">↗</span></a>
+        <a href="#dataset">Dataset</a><a href="#analyses">Analyses</a><a href="#dictionary">Data dictionary</a><a class="nav-access" href="#access">Request access <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -115,21 +115,56 @@
       </div>
     </section>
 
-    <section id="dictionary" class="section shell" aria-labelledby="dictionary-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / DOCUMENTATION</p><h2 id="dictionary-title">A closer look<br>at the source fields.</h2></div><p>Search 203 field definitions across participant characteristics, sensor observations, transcripts, and supplied sensor summaries. This dictionary describes structure and provenance; it contains no participant records.</p></div>
+    <section id="dictionary" class="section dictionary-section shell" aria-labelledby="dictionary-title">
+      <div class="dictionary-intro">
+        <div>
+          <p class="eyebrow">03 / UNDERSTAND THE DATA</p>
+          <h2 id="dictionary-title">Data dictionary</h2>
+          <p class="dictionary-subtitle">What each field means.</p>
+          <p class="dictionary-explanation">A <strong>field</strong> is a column in a data file: a glucose reading, a timestamp, or a transcript, for example. This guide explains each column and where to find it.</p>
+          <p class="dictionary-scope">203 field entries across 23 source files. A name can appear in more than one file or study wave. These are definitions, not participant records.</p>
+        </div>
+        <aside class="field-example" aria-labelledby="field-example-title">
+          <p id="field-example-title" class="example-label">ONE FIELD, EXPLAINED</p>
+          <span class="example-caption">Column name in the data file</span>
+          <code class="example-column">sensorglucose</code>
+          <div class="example-definition"><span aria-hidden="true">&#8627;</span><p><strong>Sensor glucose</strong><br>Glucose measured by the sensor, expressed in mg/dL.</p></div>
+          <button type="button" class="example-action" data-dictionary-query="sensorglucose" disabled>Find this field <span aria-hidden="true">&rarr;</span></button>
+        </aside>
+      </div>
+
+      <div class="category-heading"><h3>Start with a type of data</h3><p>Choose a group to browse its fields.</p></div>
+      <div class="dictionary-categories" role="group" aria-label="Browse fields by type of data">
+        <button type="button" class="category-card" data-dictionary-layer="participant characteristics" aria-pressed="false" disabled>
+          <span class="category-top"><span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span><span class="category-count">44 fields</span></span>
+          <strong class="category-name">Participant information</strong><span class="category-description">Demographic categories and recorded health measures.</span><span class="category-action">Browse fields <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="category-card" data-dictionary-layer="sensor observations" aria-pressed="false" disabled>
+          <span class="category-top"><span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 13h5l3-8 4 14 3-8h5"/></svg></span><span class="category-count">27 fields</span></span>
+          <strong class="category-name">Glucose readings</strong><span class="category-description">Sensor measurements, timestamps, and record identifiers.</span><span class="category-action">Browse fields <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="category-card" data-dictionary-layer="source transcript" aria-pressed="false" disabled>
+          <span class="category-top"><span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/></svg></span><span class="category-count">30 fields</span></span>
+          <strong class="category-name">Diary &amp; interview text</strong><span class="category-description">Transcript columns and available day or date information.</span><span class="category-action">Browse fields <span aria-hidden="true">&rarr;</span></span>
+        </button>
+        <button type="button" class="category-card" data-dictionary-layer="supplied sensor summaries" aria-pressed="false" disabled>
+          <span class="category-top"><span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 16V9M12 16V5M17 16v-4"/></svg></span><span class="category-count">102 fields</span></span>
+          <strong class="category-name">Glucose summaries</strong><span class="category-description">Supplied summary measures and their date intervals.</span><span class="category-action">Browse fields <span aria-hidden="true">&rarr;</span></span>
+        </button>
+      </div>
+
+      <div class="field-browser-heading"><h3 id="field-browser-title">Find a field</h3><a class="text-link download-link" href="./data/dictionary.csv" download>Download all 203 definitions <span aria-hidden="true">&darr;</span></a></div>
       <form id="dictionary-form" class="dictionary-controls" role="search" aria-label="Search the data dictionary">
-        <div class="search-control"><label for="dictionary-search">Search fields</label><div class="search-input-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="dictionary-search" type="search" placeholder="Try glucose, transcript, missing…" autocomplete="off" disabled></div></div>
+        <div class="search-control"><label for="dictionary-search">Search by name or meaning</label><div class="search-input-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="dictionary-search" type="search" placeholder="e.g. glucose, education, transcript" autocomplete="off" disabled></div></div>
         <div><label for="wave-filter">Study wave</label><select id="wave-filter" disabled><option value="all">All waves</option><option value="G1">G1</option><option value="G2">G2</option><option value="G3">G3</option></select></div>
-        <div><label for="layer-filter">Data layer</label><select id="layer-filter" disabled><option value="all">All layers</option><option value="participant characteristics">Participant characteristics</option><option value="sensor observations">Sensor observations</option><option value="source transcript">Source transcript</option><option value="supplied sensor summaries">Supplied sensor summaries</option></select></div>
+        <div><label for="layer-filter">Type of data</label><select id="layer-filter" disabled><option value="all">All types</option><option value="participant characteristics">Participant information</option><option value="sensor observations">Glucose readings</option><option value="source transcript">Diary &amp; interview text</option><option value="supplied sensor summaries">Glucose summaries</option></select></div>
         <button id="dictionary-clear" class="button button-secondary" type="button" disabled>Clear filters</button>
       </form>
-      <div class="dictionary-toolbar"><p id="dictionary-status" role="status" aria-live="polite">The complete 203-field dictionary is available in CSV and JSON. Search becomes available when the interactive view loads.</p><a class="text-link download-link" href="./data/dictionary.csv" download>Download dictionary CSV <span aria-hidden="true">↓</span></a></div>
-      <noscript><p class="method-note">Interactive search needs JavaScript. The resource description and figures remain available; download the dictionary CSV above to explore every field.</p></noscript>
+      <div class="dictionary-toolbar"><p id="dictionary-status" role="status" aria-live="polite">203 field definitions are available in the CSV download. Search becomes available when this view loads.</p><p class="field-reading-hint">Open a card for its source file and technical details.</p></div>
+      <noscript><p class="method-note">Interactive search needs JavaScript. The category guide and example remain available; download the dictionary CSV above to explore every field.</p></noscript>
       <button id="dictionary-retry" class="button button-secondary" type="button" hidden>Retry loading dictionary</button>
-      <div class="dictionary-table-wrap table-scroll" tabindex="0" role="region" aria-label="Data dictionary, scroll horizontally on small screens">
-        <table class="dictionary-table"><caption class="sr-only">Public source-field dictionary. Filter results using the search and study-wave controls.</caption><thead><tr><th scope="col">Wave / layer</th><th scope="col">Field / type</th><th scope="col">Interpretation</th><th scope="col">Source / notes</th></tr></thead><tbody id="dictionary-results"><tr><td colspan="4">Browse all field definitions in the downloadable dictionary, or use the interactive search when it loads.</td></tr></tbody></table>
-      </div>
-      <div class="dictionary-pagination" aria-label="Dictionary pagination"><span>25 fields per page</span><div><button id="dictionary-prev" type="button" class="page-button" disabled aria-label="Previous dictionary page">← Previous</button><span id="dictionary-page" aria-live="polite">Page —</span><button id="dictionary-next" type="button" class="page-button" disabled aria-label="Next dictionary page">Next →</button></div></div>
+      <ul id="dictionary-results" class="field-grid" aria-label="Field definitions"><li class="field-empty">Use the CSV download to browse all definitions, or search here when the interactive view loads.</li></ul>
+      <div class="dictionary-pagination" aria-label="Dictionary pagination"><span>25 fields per page</span><div><button id="dictionary-prev" type="button" class="page-button" disabled aria-label="Previous dictionary page">&larr; Previous</button><span id="dictionary-page" aria-live="polite">Page &mdash;</span><button id="dictionary-next" type="button" class="page-button" disabled aria-label="Next dictionary page">Next &rarr;</button></div></div>
       <p class="table-note">Glucose units are confirmed as mg/dL. In G3, the Clarity glucose column was renamed to <code>sensorglucose</code> without numerical conversion. This confirmation does not establish device versions or clock synchronization.</p>
     </section>
 

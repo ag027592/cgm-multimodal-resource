@@ -58,7 +58,15 @@ function initializeDictionary() {
   const clear = elements["dictionary-clear"];
   const retry = elements["dictionary-retry"];
   const form = elements["dictionary-form"];
-  const controls = [search, wave, layer, previous, next, clear];
+  const categoryButtons = [...document.querySelectorAll("[data-dictionary-layer]")];
+  const queryButtons = [...document.querySelectorAll("[data-dictionary-query]")];
+  const controls = [search, wave, layer, previous, next, clear, ...categoryButtons, ...queryButtons];
+  const categoryLabels = new Map([
+    ["participant characteristics", "Participant information"],
+    ["sensor observations", "Glucose readings"],
+    ["source transcript", "Diary & interview text"],
+    ["supplied sensor summaries", "Glucose summaries"],
+  ]);
 
   let state = {
     fields: [],
@@ -76,47 +84,53 @@ function initializeDictionary() {
   }
 
   function showMessage(message) {
-    const row = element("tr");
-    const cell = element("td", message, "dictionary-empty");
-    cell.colSpan = 4;
-    row.append(cell);
-    results.replaceChildren(row);
+    results.replaceChildren(element("li", message, "field-empty"));
   }
 
-  function createRow(field) {
-    const row = element("tr");
-    const context = element("td");
+  function createCard(field) {
+    const card = element("li", undefined, "field-card");
+    const context = element("div", undefined, "field-card-meta");
     context.append(
-      element("strong", field.wave, "dictionary-wave"),
-      element("span", field.layer, "dictionary-layer"),
+      element("span", field.wave, "field-wave"),
+      element("span", categoryLabels.get(field.layer) || field.layer, "field-category"),
     );
 
-    const name = element("td");
-    name.append(
-      element("code", field.field, "dictionary-field"),
-      element("span", field.storage_type, "dictionary-type"),
-    );
+    const name = element("h4", undefined, "field-name");
+    name.append(element("code", field.field));
 
-    const interpretation = element("td", field.interpretation);
-    const source = element("td");
-    source.append(element("code", sourceBasename(field.source_table), "dictionary-source"));
-    const details = element("details", undefined, "field-notes");
-    details.append(element("summary", "Field notes"));
+    const interpretation = element("p", field.interpretation, "field-meaning");
+    const details = element("details", undefined, "field-details");
+    details.append(element("summary", "Source & technical details"));
     const notes = element("dl");
     for (const [label, value] of [
+      ["Source file", sourceBasename(field.source_table)],
+      ["Stored format", field.storage_type],
       ["Missing values", field.missing_policy],
-      ["Provenance", field.provenance_status],
-      ["Evidence", field.provenance_evidence],
+      ["Source status", field.provenance_status],
+      ["Source notes", field.provenance_evidence],
     ]) {
       notes.append(element("dt", label), element("dd", value || "Not specified."));
     }
     details.append(notes);
-    source.append(details);
-    row.append(context, name, interpretation, source);
-    return row;
+    card.append(context, name, interpretation, details);
+    return card;
+  }
+
+  function syncFilters() {
+    for (const [control, value] of [
+      [search, state.filters.query],
+      [wave, state.filters.wave],
+      [layer, state.filters.layer],
+    ]) {
+      if (control.value !== value) control.value = value;
+    }
+    for (const button of categoryButtons) {
+      button.setAttribute("aria-pressed", String(button.dataset.dictionaryLayer === state.filters.layer));
+    }
   }
 
   function render() {
+    syncFilters();
     const matched = filterFields(state.fields, state.filters);
     const page = paginateFields(matched, state.page);
     state.page = page.page;
@@ -131,7 +145,7 @@ function initializeDictionary() {
     }
 
     const fragment = document.createDocumentFragment();
-    for (const field of page.items) fragment.append(createRow(field));
+    for (const field of page.items) fragment.append(createCard(field));
     results.replaceChildren(fragment);
     const matchText = page.total === 1 ? "1 field matches" : `${page.total} fields match`;
     status.textContent = `${matchText}. Showing ${page.start}\u2013${page.end} of ${page.total}.`;
@@ -143,9 +157,15 @@ function initializeDictionary() {
     render();
   }
 
+  function focusBrowser() {
+    search.focus({ preventScroll: true });
+    document.getElementById("field-browser-title")?.scrollIntoView({ block: "start" });
+  }
+
   async function loadDictionary() {
     if (state.loading || state.ready) return;
     state.loading = true;
+    syncFilters();
     for (const control of controls) control.disabled = true;
     retry.hidden = true;
     retry.disabled = true;
@@ -181,10 +201,21 @@ function initializeDictionary() {
   search.addEventListener("input", () => applyFilters({ query: search.value }));
   wave.addEventListener("change", () => applyFilters({ wave: wave.value }));
   layer.addEventListener("change", () => applyFilters({ layer: layer.value }));
+  for (const button of categoryButtons) {
+    button.addEventListener("click", () => {
+      if (!state.ready) return;
+      applyFilters({ query: "", wave: "all", layer: button.dataset.dictionaryLayer });
+      focusBrowser();
+    });
+  }
+  for (const button of queryButtons) {
+    button.addEventListener("click", () => {
+      if (!state.ready) return;
+      applyFilters({ query: button.dataset.dictionaryQuery, wave: "all", layer: "all" });
+      focusBrowser();
+    });
+  }
   clear.addEventListener("click", () => {
-    search.value = "";
-    wave.value = "all";
-    layer.value = "all";
     applyFilters({ query: "", wave: "all", layer: "all" });
   });
   previous.addEventListener("click", () => {

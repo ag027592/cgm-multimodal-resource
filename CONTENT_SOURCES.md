@@ -18,6 +18,7 @@ All source references below are relative to the explicitly supplied V01 manuscri
 - `source_table` contains the basename only. `id` is a stable schema key composed of wave, table basename and field name; it is not a participant identifier.
 - Record values, categorical vocabulary, record/missingness counts, source-record hashes, full source paths and private manifests are excluded from dictionary exports.
 - Text-cell storage descriptions are reworded to remove references to observed-type columns that are excluded from the public dictionary.
+- Two G1/G2 `sensorglucose` descriptions are reworded to describe their verified raw-export lineage and supported mg/dL units, removing a stale cross-wave caveat. Their existing provenance status and evidence are unchanged; no original source files are edited.
 - Two G3 `sensorglucose` descriptions are updated: a coauthor confirmed mg/dL and that the original Clarity `Glucose.Value..mg.dL.` column was renamed without numerical conversion. This is author-provided lineage, not independently recovered header metadata. Device provenance remains unverified. No values were converted or original source files edited.
 - Resource counts are aggregate descriptions. The 86 wave-specific identifiers are not established as 86 distinct people; 74 clinical-table identifiers represent a different available-record population.
 - Analysis eligibility is 369 complete paired diary days followed by 327 days meeting the specified CGM rules across 50 wave-specific identifiers. Date co-occurrence does not establish synchronized events or clinical prediction.
@@ -29,9 +30,9 @@ This introduction does not assert journal acceptance, peer-review completion, un
 
 ## Generated public artifacts
 
-- `data/dictionary.json` — SHA256 `f93682747e977a67a4496549d8891ad357da84f805b113dd4bd2bd38042d9fac`
+- `data/dictionary.json` — SHA256 `e5747fde55eaa1d065507a2853ab2212dcb2b030d5b6312f9c8ffcce50d067f4`
 - `data/resource.json` — SHA256 `172fa38de5487a20f7c41532f4e7a07e7980089329003e3fad83f5a0717017e7`
-- `data/dictionary.csv` — SHA256 `995e9479c2e5c167eb316e6e5de63ad3b176d79932c37d6498b1c6467499b79f`
+- `data/dictionary.csv` — SHA256 `1f4e6f3ffd1434e1d31e01abe03bd45338a0b55b7e120bc8a3a16917446a21df`
 - `assets/selection-flow.svg` — SHA256 `17b93a1d0518e897472e720ab9b8ff7024e8810d05bed213cfa3cefc6416b039`
 - `assets/descriptive-variation.svg` — SHA256 `d50cd1fabe57b745a0f7a9a63a18d6f2de3280e5991fbc1058c3f43d74a06126`
 

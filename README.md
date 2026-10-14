@@ -2,6 +2,8 @@
 
 English resource overview, aggregate descriptive figures, and a searchable 203-field data dictionary.
 
+The dictionary starts with a plain-language column example and four browseable data groups. Field cards show each column name and meaning first; source files, storage details, missing-value rules, and provenance expand on request. Its 203 entries cover 23 source files, including names repeated across files and waves.
+
 Website: https://huangchengchou.com/cgm-multimodal-resource/
 
 ## What is included
