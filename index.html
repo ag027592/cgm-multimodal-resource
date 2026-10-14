@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123a43">
+  <meta name="description" content="Explore a multimodal research resource combining continuous glucose monitoring, daily video diaries, and postvisit interviews across three study waves. Browse aggregate findings and a 203-field data dictionary.">
+  <meta property="og:title" content="CGM Multimodal Resource">
+  <meta property="og:description" content="Continuous glucose monitoring, daily diaries, and postvisit interviews. Resource documentation, descriptive analyses, and academic access information.">
+  <meta property="og:type" content="website">
+  <title>CGM Multimodal Resource · Data, context &amp; documentation</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#overview" aria-label="CGM Multimodal Resource home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="currentColor"/><path d="M7 23h7l4-10 6 17 4-9h5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>CGM<span class="brand-subtitle">MULTIMODAL RESOURCE</span></span>
+      </a>
+      <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        <a href="#dataset">Dataset</a><a href="#analyses">Analyses</a><a href="#dictionary">Dictionary</a><a class="nav-access" href="#access">Request access <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="overview" class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A documented research resource</p>
+        <h1 id="hero-title">CGM<br><span>Multimodal Resource</span></h1>
+        <p class="hero-deck">Glucose records.<br>Everyday context.</p>
+        <p class="hero-description">Continuous glucose monitoring, daily video diaries, and postvisit interviews from three studies at the University of Southern California. Explore what is available, how records connect, and what they can support.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#dataset">Explore the resource <span aria-hidden="true">↓</span></a><a class="text-link" href="#dictionary">Browse the dictionary <span aria-hidden="true">↗</span></a></div>
+        <p class="snapshot">Source snapshot: <time datetime="2026-10-12">October 12, 2026</time><span aria-hidden="true"> · </span>Documentation v1.0.0</p>
+      </div>
+      <div class="resource-illustration" aria-label="Schematic connecting glucose measurements with contextual text, audio, and video by calendar date. This illustration does not depict participant data.">
+        <div class="illustration-top"><span class="tiny-label">SIGNAL + CONTEXT</span><span class="schematic-label">SCHEMATIC</span></div>
+        <div class="signal-panel">
+          <div class="panel-heading"><span class="signal-icon" aria-hidden="true">↗</span><span>Continuous glucose monitoring<small>Repeated sensor observations</small></span></div>
+          <svg class="signal-chart" viewBox="0 0 430 170" aria-hidden="true">
+            <defs><linearGradient id="signal-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#459e94" stop-opacity=".18"/><stop offset="1" stop-color="#459e94" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#dce8e6" stroke-width="1"><path d="M15 30H415M15 75H415M15 120H415"/><path d="M95 15V145M215 15V145M335 15V145" stroke-dasharray="3 5"/></g>
+            <path d="M15 113C32 117 43 101 58 102S82 113 96 97S115 34 133 40S153 105 172 106S194 86 211 91S238 111 254 82S273 54 291 69S311 103 329 96S351 89 367 99S394 91 415 93V147H15Z" fill="url(#signal-fill)"/>
+            <path d="M15 113C32 117 43 101 58 102S82 113 96 97S115 34 133 40S153 105 172 106S194 86 211 91S238 111 254 82S273 54 291 69S311 103 329 96S351 89 367 99S394 91 415 93" fill="none" stroke="#2d827a" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#f8fbfa" stroke="#2d827a" stroke-width="2"><circle cx="96" cy="97" r="5"/><circle cx="211" cy="91" r="5"/><circle cx="329" cy="96" r="5"/></g>
+            <g fill="#667e81" font-family="Arial, sans-serif" font-size="10"><text x="95" y="166" text-anchor="middle">DIARY DATE</text><text x="215" y="166" text-anchor="middle">DIARY DATE</text><text x="335" y="166" text-anchor="middle">DIARY DATE</text></g>
+          </svg>
+        </div>
+        <div class="linkage-label"><span></span>Calendar-date linkage<span></span></div>
+        <div class="context-panels">
+          <div class="context-panel"><span class="context-symbol" aria-hidden="true">Aa</span><strong>Text</strong><span>Contextual accounts</span><div class="text-glyph" aria-hidden="true"><i></i><i></i><i></i></div></div>
+          <div class="context-panel"><svg viewBox="0 0 56 32" class="context-symbol" aria-hidden="true"><path d="M4 12v8m8-15v22m8-16v10m8-20v30m8-25v20m8-16v12m8-9v6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><strong>Audio</strong><span>Speech recordings</span><small>Acoustic features</small></div>
+          <div class="context-panel"><svg viewBox="0 0 46 32" class="context-symbol" aria-hidden="true"><rect x="2" y="2" width="31" height="28" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m33 10 11-5v22l-11-5" fill="none" stroke="currentColor" stroke-width="2"/></svg><strong>Video</strong><span>Visual context</span><small>Detection feasibility</small></div>
+        </div>
+        <p class="illustration-note">Illustration only. Shared dates do not establish synchronized events.</p>
+      </div>
+    </section>
+
+    <section class="snapshot-strip" aria-label="Resource snapshot statistics">
+      <div class="shell">
+        <div class="metrics">
+          <div class="metric"><span class="metric-number" data-resource-key="headline.wave_specific_identifiers">86</span><span class="metric-label">Wave-specific identifiers</span><span class="metric-detail">Represented in media</span></div>
+          <div class="metric"><span class="metric-number" data-resource-key="headline.media_files">1,387</span><span class="metric-label">Media files</span><span class="metric-detail"><span data-resource-key="headline.media_hours">33.62</span> hours of recordings</span></div>
+          <div class="metric"><span class="metric-number" data-resource-key="headline.raw_cgm_observations">400,947</span><span class="metric-label">Raw CGM observations</span><span class="metric-detail">Across three study waves</span></div>
+          <div class="metric"><span class="metric-number" data-resource-key="headline.dictionary_fields">203</span><span class="metric-label">Documented source fields</span><span class="metric-detail">Searchable below</span></div>
+        </div>
+        <p class="denominator-note">These counts describe different data layers. Wave-specific identifiers are not established as distinct people across studies; observed availability is not recruitment completion or recording adherence.</p>
+      </div>
+    </section>
+
+    <section id="dataset" class="section shell" aria-labelledby="dataset-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / DATASET</p><h2 id="dataset-title">Three study waves.<br>Complementary perspectives.</h2></div><p>The resource connects sensor records with participants’ accounts of CGM use, food, activities, and everyday experiences. Study designs and represented cohorts differ.</p></div>
+      <div class="wave-table-wrap table-scroll" tabindex="0" role="region" aria-label="Study-wave comparison, scroll horizontally on small screens">
+        <table class="wave-table">
+          <caption class="sr-only">Source-study context and observed records by wave, October 12, 2026 snapshot.</caption>
+          <thead><tr><th scope="col">Resource characteristic</th><th scope="col"><span class="wave-badge">G1</span></th><th scope="col"><span class="wave-badge">G2</span></th><th scope="col"><span class="wave-badge">G3</span></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Recruitment context</th><td>Adult community<br>health workers</td><td>Adult community<br>health workers</td><td>Community-dwelling<br>adults aged ≥35</td></tr>
+            <tr><th scope="row">Documented CGM schedule</th><td>20 unmasked days</td><td>10 masked +<br>10 unmasked days</td><td>10 masked +<br>10 unmasked days</td></tr>
+            <tr><th scope="row">Clinical-table records</th><td>20</td><td>30</td><td>24</td></tr>
+            <tr><th scope="row">Raw CGM observations</th><td>105,361</td><td>157,363</td><td>138,223</td></tr>
+            <tr><th scope="row">Daily media files</th><td>533</td><td>402</td><td>374</td></tr>
+            <tr><th scope="row">Postvisit media files</th><td>18</td><td>33</td><td>27</td></tr>
+            <tr><th scope="row">Observed daily keys</th><td>335</td><td>223</td><td>208</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Daily keys use calendar dates in G1 and filename study-day labels in G2/G3. Protocol schedules describe intended collection, not verified wear time. Clinical tables, media, and registry enrollment have separate denominators.</p>
+      <div class="collection-flow" aria-label="Documented collection workflow">
+        <article><span class="step-number">01</span><h3>Measure glucose</h3><p>Repeated CGM observations provide a sensor record. All glucose values are expressed in mg/dL.</p></article>
+        <article><span class="step-number">02</span><h3>Record daily context</h3><p>Smartphone diaries capture accounts prompted by CGM feedback and study questions.</p></article>
+        <article><span class="step-number">03</span><h3>Reflect after the visit</h3><p>Semistructured interviews document experiences with monitoring and everyday activities.</p></article>
+      </div>
+      <aside class="method-note"><span class="note-mark" aria-hidden="true">i</span><p><strong>How records connect.</strong> Identifiers link records within a study wave. The diary demonstration uses wave × identifier × calendar date. This is date co-occurrence, not verified alignment between a narrated event and a glucose reading.</p></aside>
+    </section>
+
+    <section id="analyses" class="section analyses-section" aria-labelledby="analyses-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">02 / ANALYSIS EXAMPLES</p><h2 id="analyses-title">What changes when<br>we define an analysis?</h2></div><p>Descriptive demonstrations make selection and processing choices visible. These results characterize available records; they do not establish clinical prediction or cross-modal associations.</p></div>
+        <div class="analysis-feature">
+          <div class="finding-copy"><span class="tag">G2 + G3 DIARIES</span><h3>Stable identifier counts.<br>Fewer eligible dates.</h3><p>Daily CGM quality criteria retained 327 of 369 complete paired diary dates while retaining all 50 represented wave-specific identifiers.</p><div class="selection-numbers"><div><strong data-resource-key="eligibility.complete_paired_diary_days">369</strong><span>Paired dates</span></div><span class="selection-arrow" aria-hidden="true">→</span><div><strong data-resource-key="eligibility.cgm_eligible_days">327</strong><span>CGM-eligible dates</span></div></div><p class="small-text">Primary rule: at least 231 unique valid readings and a maximum gap of 60 minutes, including day boundaries. These are analyst-defined rules.</p><a class="text-link" href="./assets/selection-flow.svg">Open selection figure <span aria-hidden="true">↗</span></a></div>
+          <figure class="figure-panel"><img src="./assets/selection-flow.svg" alt="G2 dates decrease from 223 observed media keys to 201 reference days, 199 complete paired days, and 177 CGM-eligible days. G3 decreases from 208 keys to 170 reference and paired days, then 150 eligible days." width="1000" height="800" loading="lazy"><figcaption>Selection is measured at both the identifier and observation-date levels.</figcaption></figure>
+        </div>
+        <div class="finding-bar"><div><strong data-resource-key="eligibility.wave_specific_identifiers">50</strong><span>IDs retained under the primary CGM rule</span></div><p>Allowing a maximum gap of 30, 60, or 120 minutes retains <strong>320, 327, or 334 dates</strong>. Each rule keeps the same 50 IDs. A stable identifier denominator can conceal changing observation support.</p></div>
+        <div class="variation-feature">
+          <figure class="figure-panel variation-figure"><img src="./assets/descriptive-variation.svg" alt="Six panels show the distributions of within-identifier across-day IQRs for daily mean glucose, glucose SD, glucose CV, recording pitch median, pitch range, and mean HNR. The same eligible dates are used across panels, with 26 G2 and 22 G3 identifiers contributing at least two dates." width="1050" height="1080" loading="lazy"><figcaption>Each point summarizes one wave-specific identifier; these are descriptive distributions, not association estimates.</figcaption></figure>
+          <div class="finding-copy"><span class="tag">WITHIN-IDENTIFIER VARIATION</span><h3>Shared dates.<br>Different measurements.</h3><p>CGM and acoustic summaries can be described on the same eligible dates. Across-day IQRs require at least two dates, leaving 48 identifiers in this display.</p><dl class="feature-list"><div><dt>CGM</dt><dd>Daily mean, sample SD, and coefficient of variation.</dd></div><div><dt>Audio</dt><dd>eGeMAPSv02 pitch and harmonics-to-noise summaries, weighted by detected phonation duration.</dd></div><div><dt>Text</dt><dd>LIWC-22 word categories describe the stored English text, with provenance strata kept separate.</dd></div><div><dt>Video</dt><dd>Sampled OpenFace detections describe processing feasibility.</dd></div></dl><a class="text-link" href="./assets/descriptive-variation.svg">Open variation figure <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="limitations"><h3>Interpretation boundaries</h3><div><p><strong>Language provenance.</strong> Original-versus-translated status remains undocumented for 361 of 371 candidate text days.</p><p><strong>Time alignment.</strong> Shared calendar dates do not establish synchronized clocks or event-level correspondence.</p><p><strong>Measurement validity.</strong> Finite acoustic features and accepted face detections do not establish validated psychological, clinical, or facial measurements.</p></div></div>
+      </div>
+    </section>
+
+    <section id="dictionary" class="section shell" aria-labelledby="dictionary-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / DOCUMENTATION</p><h2 id="dictionary-title">A closer look<br>at the source fields.</h2></div><p>Search 203 field definitions across participant characteristics, sensor observations, transcripts, and supplied sensor summaries. This dictionary describes structure and provenance; it contains no participant records.</p></div>
+      <form id="dictionary-form" class="dictionary-controls" role="search" aria-label="Search the data dictionary">
+        <div class="search-control"><label for="dictionary-search">Search fields</label><div class="search-input-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="dictionary-search" type="search" placeholder="Try glucose, transcript, missing…" autocomplete="off" disabled></div></div>
+        <div><label for="wave-filter">Study wave</label><select id="wave-filter" disabled><option value="all">All waves</option><option value="G1">G1</option><option value="G2">G2</option><option value="G3">G3</option></select></div>
+        <div><label for="layer-filter">Data layer</label><select id="layer-filter" disabled><option value="all">All layers</option><option value="participant characteristics">Participant characteristics</option><option value="sensor observations">Sensor observations</option><option value="source transcript">Source transcript</option><option value="supplied sensor summaries">Supplied sensor summaries</option></select></div>
+        <button id="dictionary-clear" class="button button-secondary" type="button" disabled>Clear filters</button>
+      </form>
+      <div class="dictionary-toolbar"><p id="dictionary-status" role="status" aria-live="polite">The complete 203-field dictionary is available in CSV and JSON. Search becomes available when the interactive view loads.</p><a class="text-link download-link" href="./data/dictionary.csv" download>Download dictionary CSV <span aria-hidden="true">↓</span></a></div>
+      <noscript><p class="method-note">Interactive search needs JavaScript. The resource description and figures remain available; download the dictionary CSV above to explore every field.</p></noscript>
+      <button id="dictionary-retry" class="button button-secondary" type="button" hidden>Retry loading dictionary</button>
+      <div class="dictionary-table-wrap table-scroll" tabindex="0" role="region" aria-label="Data dictionary, scroll horizontally on small screens">
+        <table class="dictionary-table"><caption class="sr-only">Public source-field dictionary. Filter results using the search and study-wave controls.</caption><thead><tr><th scope="col">Wave / layer</th><th scope="col">Field / type</th><th scope="col">Interpretation</th><th scope="col">Source / notes</th></tr></thead><tbody id="dictionary-results"><tr><td colspan="4">Browse all field definitions in the downloadable dictionary, or use the interactive search when it loads.</td></tr></tbody></table>
+      </div>
+      <div class="dictionary-pagination" aria-label="Dictionary pagination"><span>25 fields per page</span><div><button id="dictionary-prev" type="button" class="page-button" disabled aria-label="Previous dictionary page">← Previous</button><span id="dictionary-page" aria-live="polite">Page —</span><button id="dictionary-next" type="button" class="page-button" disabled aria-label="Next dictionary page">Next →</button></div></div>
+      <p class="table-note">Glucose units are confirmed as mg/dL. In G3, the Clarity glucose column was renamed to <code>sensorglucose</code> without numerical conversion. This confirmation does not establish device versions or clock synchronization.</p>
+    </section>
+
+    <section id="access" class="access-section" aria-labelledby="access-title">
+      <div class="shell access-grid"><div><p class="eyebrow">04 / ACCESS &amp; PROJECT</p><h2 id="access-title">Have a research question<br>for this resource?</h2><p>Requests are restricted to applicants affiliated with academic institutions. Contact Professor David Black to discuss the proposed use and applicable access conditions.</p><a class="button button-light" href="mailto:davidbla@usc.edu?subject=CGM%20Multimodal%20Resource%20%E2%80%94%20academic%20access%20inquiry">Contact Prof. David Black <span aria-hidden="true">↗</span></a><p class="access-email"><a href="mailto:davidbla@usc.edu">davidbla@usc.edu</a></p></div><aside class="access-note"><h3>Access is assessed for the proposed use.</h3><p>The request route does not guarantee access to every modality. Recordings, participant transcripts, clinical and CGM records, and linkage manifests are not publicly distributed on this website.</p><p>Faces, voices, narratives, and record linkages may identify participants. Applicable permissions and conditions must be established for each external research use.</p></aside></div>
+    </section>
+
+    <section class="project-section shell" aria-labelledby="project-title">
+      <div><p class="eyebrow">PROJECT INFORMATION</p><h2 id="project-title">Research team &amp; documentation</h2><p class="team-list">Huang-Cheng Chou · Bowen Yi · Nicholas Arce · Vu My · Ruth A Flores Cambara · Shrikanth Narayanan · David Black</p><p>Viterbi School of Engineering and Keck School of Medicine<br>University of Southern California</p></div>
+      <div class="project-metadata"><dl><div><dt>Manuscript</dt><dd>In preparation</dd></div><div><dt>Resource snapshot</dt><dd>October 12, 2026</dd></div><div><dt>Documentation release</dt><dd>v1.0.0 · October 13, 2026</dd></div><div><dt>Website source</dt><dd><a href="https://github.com/ag027592/cgm-multimodal-resource">View repository <span aria-hidden="true">↗</span></a></dd></div><div><dt>Content provenance</dt><dd><a href="./CONTENT_SOURCES.md">Sources &amp; interpretation notes <span aria-hidden="true">↗</span></a></dd></div></dl></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell"><a class="footer-brand" href="#overview">CGM Multimodal Resource</a><p>Resource documentation · Descriptive research · Academic access</p><a href="#overview">Back to top ↑</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "cgm-multimodal-resource",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static documentation website for the CGM Multimodal Resource",
+  "scripts": {
+    "test": "node --test tests/dictionary.test.mjs"
+  }
+}

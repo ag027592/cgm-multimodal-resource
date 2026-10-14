@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "snapshot_date": "2026-10-12",
+  "updated_date": "2026-10-13",
+  "headline": {
+    "wave_specific_identifiers": 86,
+    "media_files": 1387,
+    "media_hours": 33.62,
+    "raw_cgm_observations": 400947,
+    "dictionary_fields": 203
+  },
+  "waves": [
+    {
+      "wave": "G1",
+      "clinical_identifiers": 20,
+      "raw_cgm_observations": 105361,
+      "daily_media_files": 533,
+      "interview_media_files": 18,
+      "observed_daily_keys": 335
+    },
+    {
+      "wave": "G2",
+      "clinical_identifiers": 30,
+      "raw_cgm_observations": 157363,
+      "daily_media_files": 402,
+      "interview_media_files": 33,
+      "observed_daily_keys": 223
+    },
+    {
+      "wave": "G3",
+      "clinical_identifiers": 24,
+      "raw_cgm_observations": 138223,
+      "daily_media_files": 374,
+      "interview_media_files": 27,
+      "observed_daily_keys": 208
+    }
+  ],
+  "eligibility": {
+    "analysis_waves": [
+      "G2",
+      "G3"
+    ],
+    "complete_paired_diary_days": 369,
+    "cgm_eligible_days": 327,
+    "wave_specific_identifiers": 50,
+    "identifiers_with_repeated_eligible_dates": 48,
+    "minimum_unique_readings": 231,
+    "nominal_daily_readings": 288,
+    "maximum_gap_minutes_including_boundaries": 60
+  },
+  "interpretation": {
+    "identifier_unit": "Wave-specific identifiers; 86 identifiers are not established as 86 distinct people across waves.",
+    "duration_basis": "Observed media duration from metadata probes; duration does not establish recording usability or intelligibility.",
+    "day_key_basis": "Observed daily-media keys; G1 keys use filename dates, whereas G2/G3 keys use explicit study-day tokens. These are not all verified recording dates.",
+    "linkage": "Exported calendar-date co-occurrence does not establish event-level clock synchronization or a glucose-response association.",
+    "clinical_scope": "Clinical-table identifiers describe available clinical exports, not every media identifier or a deduplicated cross-wave cohort."
+  }
+}
