@@ -1,8 +1,6 @@
 # CGM Multimodal Resource
 
-English resource overview, aggregate descriptive figures, and a searchable 203-field data dictionary.
-
-The dictionary starts with a plain-language column example and four browseable data groups. Field cards show each column name and meaning first; source files, storage details, missing-value rules, and provenance expand on request. Its 203 entries cover 23 source files, including names repeated across files and waves.
+English resource overview, aggregate descriptive figures, and academic access information.
 
 Website: https://huangchengchou.com/cgm-multimodal-resource/
 
@@ -22,7 +20,7 @@ Serve this directory over HTTP using Python 3:
 python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8765/`. The main page remains readable without JavaScript. Dictionary search requires JavaScript and loads only the public dictionary JSON; CSV is available for offline use.
+Open `http://127.0.0.1:8765/`. The main page remains readable without JavaScript. JavaScript only enhances the mobile navigation menu.
 
 Node.js 20+ and Python 3.11+ are sufficient for the automated checks; no package installation is needed:
 
@@ -33,7 +31,7 @@ python scripts/validate_site.py
 
 ## Update the public documentation
 
-Edit `index.html` and `styles.css` for presentation; `app.js` and `dictionary.js` implement browser-local search, filtering, and pagination.
+Edit `index.html` and `styles.css` for presentation; `app.js` controls the mobile navigation menu. Field-reference files are retained in the repository, but the website has no dictionary section, search interface, or download entry point.
 
 The asset preparation script uses an explicitly supplied authorized manuscript directory:
 
@@ -47,7 +45,7 @@ It derives public field documentation and aggregate assets, not participant reco
 
 GitHub Pages serves the root of the `main` branch. `.nojekyll` disables Jekyll processing. All local assets use relative URLs to support the project subpath. A commit pushed to `main` triggers deployment. No custom-domain file is needed: the project inherits the account's existing Pages domain.
 
-After each release, check the deployed site, dictionary interactions, mobile layout, and downloaded CSV. Revert the affected website commit to restore a previous version if needed. The personal-site repository and study data are separate from this project.
+After each release, check the deployed site, navigation, aggregate figures, and mobile layout. Revert the affected website commit to restore a previous version if needed. The personal-site repository and study data are separate from this project.
 
 ## Version
 

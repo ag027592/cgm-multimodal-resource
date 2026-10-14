@@ -361,7 +361,7 @@ class Audit:
             self.link(value, "index.html", html.ids)
         if isinstance(resource, dict):
             bound = {m["key"] for m in html.metrics}
-            required = {"headline." + key for key in EXPECTED_HEADLINE}
+            required = {"headline." + key for key in EXPECTED_HEADLINE if key != "dictionary_fields"}
             self.check("html_headline_metric_bindings", required.issubset(bound), "index.html", "Each headline number needs a data-resource-key binding for reproducible HTML-to-JSON validation.")
             for metric in html.metrics:
                 current = resource
